@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Author's Dashboard</h1>
+
+
+    <hr>
+
+    <p>Create Author:</p>
+    <form action="/author" method="POST">
+       name: <input type="text" name="name">
+       desc: <input type="text" name="desc">
+       <input type="submit" value='Create Author!'>
+    </form>
+    <hr>
+
+    <% for(let author of authors){ %>
+
+            <p><%= author.name %></p>
+            <p><%= author.desc %></p>
+            <form action="/author/delete/<%= author._id %>" method="POST">
+                <input type="submit" value="Delete!">
+            </form>
+            <form action="/book/<%= author._id %>" method="POST">
+                title: <input type="text" name="title">
+                desc: <input type="text" name="desc">
+                <input type="submit" value='Create Book!'>
+            </form>
+            <hr>
+
+            <!-- <% for(let book of author.books){ %>
+
+                <p><%= book.title %></p>
+                <p><%= book.desc %></p>
+                <hr>
+            <% } %> -->
+
+    <% } %>
+</body>
+</html>
